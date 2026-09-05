@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Teach Yourself Audio Downloader
-// @namespace    teachyourself-audio-downloader
+// @name         TY Audio Downloader
+// @namespace    ty-audio-downloader
 // @version      1.5.4
 // @description  Detect and download Teach Yourself's MP3 free resources from Library
 // @match        https://library.teachyourself.com/*
@@ -9,6 +9,10 @@
 // @run-at       document-start
 // @inject-into  page
 // @noframes
+// @homepageURL  https://github.com/Myst1cX/tyaudiodl/
+// @supportURL   https://github.com/Myst1cX/tyaudiodl/issues
+// @updateURL    https://raw.githubusercontent.com/Myst1cX/tyaudiodl/main/ty-audio-downloader.user.js
+// @downloadURL  https://raw.githubusercontent.com/Myst1cX/tyaudiodl/main/ty-audio-downloader.user.js
 // ==/UserScript==
 
 (() => {
