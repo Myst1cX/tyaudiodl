@@ -2,7 +2,7 @@
 // @name         Teach Yourself Audio Downloader
 // @namespace    teachyourself-audio-downloader
 // @version      1.5.4
-// @description  Detect and download Teach Yourself Library MP3 resources
+// @description  Detect and download Teach Yourself's MP3 free resources from Library
 // @match        https://library.teachyourself.com/*
 // @grant        GM_download
 // @grant        GM_registerMenuCommand
