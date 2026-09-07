@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TY Audio Downloader
 // @namespace    ty-audio-downloader
-// @version      1.5.5
+// @version      1.5.6
 // @description  Detect and download Teach Yourself's MP3 free resources from Library
 // @author       Myst1cX 
 // @match        https://library.teachyourself.com/*
