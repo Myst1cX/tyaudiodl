@@ -31,6 +31,7 @@
 
     let running = false;
     let stopRequested = false;
+    let previousDelayMs = null;
 
     // Handles for whatever is currently in flight, so Stop can reach in and
     // cancel it immediately instead of waiting for it to finish.
@@ -321,9 +322,19 @@
         panel.querySelector('#ty-download').addEventListener('click', downloadSelected);
         panel.querySelector('#ty-stop').addEventListener('click', hardStop);
 
-        panel.querySelector('#ty-delay').addEventListener('change', () => {
-            const seconds = Number(panel.querySelector('#ty-delay').value) / 1000;
-            status(`Download delay set to ${seconds} second(s).`);
+        const delaySelect = panel.querySelector('#ty-delay');
+        previousDelayMs = Number(delaySelect.value);
+
+        delaySelect.addEventListener('change', () => {
+            const newMs = Number(delaySelect.value);
+            const oldSec = previousDelayMs / 1000;
+            const newSec = newMs / 1000;
+            if (running) {
+                status(`Delay set to ${newSec}s (was ${oldSec}s). Current wait still finishes at ${oldSec}s.`);
+            } else {
+                status(`Delay set to ${newSec}s (was ${oldSec}s).`);
+            }
+            previousDelayMs = newMs;
         });
 
         addStyles(shadowRoot);
