@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TY Audio Downloader
 // @namespace    ty-audio-downloader
-// @version      1.5.4
+// @version      1.5.5
 // @description  Detect and download Teach Yourself's MP3 free resources from Library
 // @author       Myst1cX 
 // @match        https://library.teachyourself.com/*
@@ -463,7 +463,6 @@
         running = true;
         stopRequested = false;
 
-        const delay = Number(panel.querySelector('#ty-delay').value);
         const downloadButton = panel.querySelector('#ty-download');
         const stopButton = panel.querySelector('#ty-stop');
 
@@ -516,9 +515,14 @@
                     // -----------------------------------------
                     // HUMAN-SPEED DELAY
                     // -----------------------------------------
-                    if (completed < selected.length && !stopRequested && delay > 0) {
-                        status(`Downloaded ${completed}/${selected.length}. Waiting ${delay / 1000}s...`);
-                        await sleep(delay);
+                    // Read the delay fresh here (rather than once at the
+                    // top of the run) so that changing the dropdown mid-
+                    // batch takes effect immediately, without needing to
+                    // Stop and restart.
+                    const currentDelay = Number(panel.querySelector('#ty-delay').value);
+                    if (completed < selected.length && !stopRequested && currentDelay > 0) {
+                        status(`Downloaded ${completed}/${selected.length}. Waiting ${currentDelay / 1000}s...`);
+                        await sleep(currentDelay);
                     }
 
                 } catch (error) {
